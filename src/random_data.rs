@@ -18,13 +18,13 @@ fn generate() -> Data {
 pub fn init() {
     let start_time = Instant::now();
 
-    let data_vec: Vec<Data> = (0..1000).into_par_iter().map(|_| generate()).collect();
+    let data_vec: Vec<Data> = (0..100_000).into_par_iter().map(|_| generate()).collect();
 
     let json_string = serde_json::to_string(&data_vec).unwrap();
     println!("{}", json_string);
 
     let elapsed_time = start_time.elapsed();
-    println!("Finished!");
+    println!("Finished generating!");
     println!("Elapsed time: {:?}", elapsed_time);
 
     std::fs::write("data.json", json_string).unwrap();
