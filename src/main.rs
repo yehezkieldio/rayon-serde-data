@@ -1,3 +1,14 @@
+mod random_data;
+
+use serde::Serialize;
+
+#[derive(Serialize)]
+struct Data {
+    id: u64,
+    name: String,
+    age: u8,
+}
+
 fn main() {
-    println!("Hello, world!");
+    random_data::init();
 }
